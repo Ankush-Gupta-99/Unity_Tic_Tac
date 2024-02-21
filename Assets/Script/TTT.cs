@@ -13,10 +13,7 @@ public class TTT : MonoBehaviour
     [SerializeField] SO ValueCheck;
     [SerializeField] GameObject x;
     [SerializeField] GameObject o;
-    private void Start()
-    {
-        ValueCheck.lastValue = SO.LastValue.na;
-    }
+    
 
     public void Click()
     {

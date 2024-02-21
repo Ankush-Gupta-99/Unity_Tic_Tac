@@ -8,19 +8,26 @@ public class Control : MonoBehaviour
 {
     [HideInInspector]
     public static Control instance;    
-    [SerializeField] GameObject player1text;
-    [SerializeField] GameObject player2text;
-    [HideInInspector]//player player1 = t 
+    [SerializeField] GameObject playerXtext;
+    [SerializeField] GameObject playerOtext;
+    [HideInInspector]
+    //player playerx = t 
     public bool user;
+    [SerializeField] SO last;
 
     private void Awake()
     {
-        
-        user = true;
-        
-        instance = this;
+        if (last.lastValue == SO.LastValue.o)
+        {
+            user = true;
 
-        
+        }
+        else
+        {
+            user = false;
+        }
+
+        instance = this;
     }
     private void Start()
     {
@@ -39,13 +46,13 @@ public class Control : MonoBehaviour
     {
         if (user==true)
         {
-            player1text.SetActive(true);
-            player2text.SetActive(false);
+            playerXtext.SetActive(true);
+            playerOtext.SetActive(false);
         }
         else
         {
-            player2text.SetActive(true);
-            player1text.SetActive(false);
+            playerOtext.SetActive(true);
+            playerXtext.SetActive(false);
         }
     }
     

@@ -12,14 +12,17 @@ public class MainMan : MonoBehaviour
     [SerializeField] TMP_Text Score1;
     [SerializeField] TMP_Text Score2;
     [SerializeField] Score ScoreStore;
+    [SerializeField] SO last;
     // Start is called before the first frame update
     public bool allow = true;
     public int ScoreP1;
     public int ScoreP2;
     [SerializeField]
-    GameObject WinText;
+    GameObject WinTextX;
+    [SerializeField] GameObject WinTextO;
     [SerializeField]
     GameObject TieText;
+    [SerializeField] SO firstP;
 
     private void Start()
     {
@@ -48,16 +51,33 @@ public class MainMan : MonoBehaviour
             ((CurrentValue[2, 0] == CurrentValue[1, 1]) && (CurrentValue[1, 1] == CurrentValue[0, 2]) && (CurrentValue[0, 2] != SO.LastValue.na)))
         {
             allow = false;
-            WinText.SetActive(true);
+            
             
             StartCoroutine("Reset");
-            if (Control.instance.user)
+            if (last.lastValue==SO.LastValue.x)
             {
-                MainMan.instance.ScoreP1 += 1;
+                WinTextX.SetActive(true);
+                if (firstP.lastValue == last.lastValue)
+                {
+                    MainMan.instance.ScoreP1 += 1;
+                }
+                else
+                {
+                    MainMan.instance.ScoreP2 += 1;
+                }
+                
             }
             else
             {
-                MainMan.instance.ScoreP2 += 1;
+                WinTextO.SetActive(true);
+                if (firstP.lastValue == last.lastValue)
+                {
+                    MainMan.instance.ScoreP1 += 1;
+                }
+                else
+                {
+                    MainMan.instance.ScoreP2 += 1;
+                }
             }
         }
         else
@@ -85,16 +105,17 @@ public class MainMan : MonoBehaviour
     }
     void SetScore()
     {
-        Score1.SetText("Score 1: " + MainMan.instance.ScoreP1.ToString());
-        Score2.SetText("Score 2: " + MainMan.instance.ScoreP2.ToString());
+        Score1.SetText("Player 1: " + MainMan.instance.ScoreP1.ToString());
+        Score2.SetText("Player 2: " + MainMan.instance.ScoreP2.ToString());
     }
     IEnumerator Reset()
     {
         yield return new WaitForSeconds(2);
-        WinText.SetActive(false);
+        WinTextX.SetActive(false);
+        WinTextO.SetActive(false);
         TieText.SetActive(false);
         ScoreStore.ScoreP1 = ScoreP1;
         ScoreStore.ScoreP2 = ScoreP2;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
