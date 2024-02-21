@@ -531,8 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a3b3551ed8c0f4a9feb0542696de5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: {fileID: 11400000, guid: 945c9d01b46e46c46aae7a88c7ff0c8e, type: 2}
-  lastinp: {fileID: 11400000, guid: 8c1d9876ae195ef45813e5ee190a65ba, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

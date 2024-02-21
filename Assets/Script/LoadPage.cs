@@ -14,7 +14,7 @@ public class LoadPage : MonoBehaviour
     
     IEnumerator Enable()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4.3f);
         SceneManager.LoadScene(1);
     }
     
